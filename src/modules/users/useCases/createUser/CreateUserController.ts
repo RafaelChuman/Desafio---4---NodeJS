@@ -11,7 +11,14 @@ class CreateUserController {
       email,
     } = request.body;
     
-    return response.json(this.createUserUseCase.execute({name, email}));
+    try{
+      const resp = this.createUserUseCase.execute({name, email});
+      return response.status(201).json(resp);
+    }
+    catch (error){
+      console.log(error);
+      return response.status(400).json({"error":error});
+    }
   }
 }
 

@@ -15,8 +15,8 @@ class User {
 
   public constructor() {
     this.id = uuidV4();
-    this.created_at = new Date();
-    this.updated_at = new Date();
+    this.created_at = new Date(Date.now());
+    this.updated_at = new Date(Date.now());
     this.admin = false;
   }
 }

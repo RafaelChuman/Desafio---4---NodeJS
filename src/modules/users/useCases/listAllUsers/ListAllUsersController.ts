@@ -9,9 +9,14 @@ class ListAllUsersController {
 
   handle(request: Request, response: Response): Response {
 
-    const iRequest: IRequest = {user_id: JSON.stringify(request.headers)};
+    const user_id:string = request.get('User_Id');
 
-    return response.json(this.listAllUsersUseCase.execute(iRequest));
+    try{
+      return response.json(this.listAllUsersUseCase.execute({user_id}));
+    }
+    catch (error){
+      return response.status(400).json({"error":error});
+    }
   }
 }
 

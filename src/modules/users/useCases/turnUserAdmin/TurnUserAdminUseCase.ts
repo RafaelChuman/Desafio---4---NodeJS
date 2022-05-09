@@ -12,7 +12,7 @@ class TurnUserAdminUseCase {
     const user = this.usersRepository.findById(user_id);
 
     if(user === undefined){
-      throw new Error("I'ts not possible to turn this user Admin, besause we don't foudn this ID.");
+      throw new Error("I'ts not possible to turn this user Admin, besause we don't found this ID.");
     }
     
     return this.usersRepository.turnAdmin(user);
