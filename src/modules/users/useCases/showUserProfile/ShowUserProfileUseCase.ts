@@ -9,8 +9,14 @@ class ShowUserProfileUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User {
-    // Complete aqui
+    const user = this.usersRepository.findById(user_id);
+
+    if(user === undefined) {
+      throw new Error(`Its not possible to find this ID ${user_id}`);
+    }
+
+    return user;
   }
 }
 
-export { ShowUserProfileUseCase };
+export { ShowUserProfileUseCase, IRequest };
